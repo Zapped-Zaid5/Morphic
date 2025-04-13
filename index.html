@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MORPHIC | Transception Games</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #111;
+            padding: 20px 0;
+            border-bottom: 3px solid #ff0000;
+        }
+        
+        .logo {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-align: center;
+            margin: 0;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5px;
+            color: #aaa;
+        }
+        
+        .hero {
+            height: 400px;
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            margin: 0;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #fff;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin: 0 0 40px;
+            color: #ff0000;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #ff0000;
+        }
+        
+        .game-description {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .character-card {
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
+        }
+        
+        .character-img {
+            height: 200px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .character-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .character-info {
+            padding: 20px;
+        }
+        
+        .character-name {
+            font-size: 24px;
+            margin: 0 0 10px;
+            color: #ff0000;
+        }
+        
+        .character-bio {
+            font-size: 16px;
+            color: #ddd;
+        }
+        
+        .setting {
+            background-color: #111;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .studio-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #cc0000;
+        }
+        
+        footer {
+            background-color: #111;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 3px solid #ff0000;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #ff0000;
+        }
+        
+        .credits {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Transception Games</h1>
+            <p class="tagline">Blurring the lines between reality and gameplay</p>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">MORPHIC</h2>
+            <p class="hero-subtitle">An immersive RPG experience coming in the 2030's</p>
+        </div>
+    </div>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About The Game</h2>
+            <div class="game-description">
+                <p>Morphic is an upcoming video game coming in the 2030's, developed by Zapped Zaid. This game is a turn-based character-driven RPG with social simulation, dungeon crawling, creature collection, and Action RPG elements. The game also includes a very intense storyline that adapts to your choices as a player.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="characters">
+        <div class="container">
+            <h2 class="section-title">Character Bios</h2>
+            <div class="characters">
+                <div class="character-card">
+                    <div class="character-img">
+                        <img src="/api/placeholder/300/200" alt="Protagonist">
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Protagonist</h3>
+                        <p class="character-bio">The avatar of You. Customize their looks and personality to your liking and explore. You have over 200 endings here for you to see. Enjoy your freedom.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img">
+                        <img src="/api/placeholder/300/200" alt="Ayarakaz Shin/Valor">
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Ayarakaz Shin/Valor</h3>
+                        <p class="character-bio">The team leader... can you understand him or not? Who the flip knows, he climbs mountains in 5 minutes, fights bears and his goal? VALOR!!</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img">
+                        <img src="/api/placeholder/300/200" alt="Heiki Vorz">
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Heiki Vorz</h3>
+                        <p class="character-bio">Your caring uncle who took you after your parents died of a stroke in the intro of the game... He's dedicated to the job of detective and is almost superhuman, has fried chicken though.</p>
+                        <a href="https://zapped-zaid5.github.io/#" class="btn">More About Heiki</a>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img">
+                        <img src="/api/placeholder/300/200" alt="Ruri Shousha">
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Ruri Shousha</h3>
+                        <p class="character-bio">???[Play the game to find out LOL]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="setting">
+        <div class="container">
+            <h2 class="section-title">Game Setting</h2>
+            <div class="setting">
+                <p>The game takes place in Keroni, a fictional nation with a new culture inspired by Japanese, Chinese, Indian, and Egyptian mythologies. Enjoy the streets' vast array of banana chips in Morphic. But it is not deemed to be that simple. A murder series has taken over Keroni, and now you, along with your team of supernaturally powered humans who have been bestowed with the power of the morphic, try to figure out the mystery yourselves.</p>
+            </div>
+            
+            <div class="studio-info">
+                <h3>About Transception Games</h3>
+                <p>Transception Games was founded by Zapped Zaid with the vision of creating immersive and adaptive gaming experiences that blur the line between player choice and narrative.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.youtube.com/@ZappedZaid5" target="_blank">YouTube</a>
+            </div>
+            <div class="credits">
+                <p>&copy; 2025 Transception Games. All rights reserved.</p>
+                <p>Website assistance by Vidyut</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
